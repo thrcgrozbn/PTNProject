@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9266544ae39047ffae4d867440d81872, type: 3}
+  m_Name: BarrackType3
+  m_EditorClassIdentifier: 
+  productPrice: 25
+  productName: Magical Warriors
+  productSprite: {fileID: 21300000, guid: d7ee00a07329c584ba0209e210b0e8a2, type: 3}
+  productPrefab: {fileID: 4920802065262727116, guid: f41d05b2a87eaca41abbc96a05afed51, type: 3}
+  totalHp: 10
+  totalDamage: 10
+  speed: 6

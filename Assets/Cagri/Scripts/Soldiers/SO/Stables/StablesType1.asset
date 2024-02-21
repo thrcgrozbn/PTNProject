@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9266544ae39047ffae4d867440d81872, type: 3}
+  m_Name: StablesType1
+  m_EditorClassIdentifier: 
+  productPrice: 8
+  productName: Sneaky Riders
+  productSprite: {fileID: 21300000, guid: d6e0c7ac11c5283478f40350f3925a5c, type: 3}
+  productPrefab: {fileID: 4090178299139013384, guid: 0dbada7158cba78418afee157cba05ec, type: 3}
+  totalHp: 10
+  totalDamage: 2
+  speed: 10

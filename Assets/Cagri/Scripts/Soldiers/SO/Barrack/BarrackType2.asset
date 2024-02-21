@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9266544ae39047ffae4d867440d81872, type: 3}
+  m_Name: BarrackType2
+  m_EditorClassIdentifier: 
+  productPrice: 10
+  productName: Heroic Cookies
+  productSprite: {fileID: 21300000, guid: 4b950d3b72fca874d941f7d876b28ed4, type: 3}
+  productPrefab: {fileID: 8280503670955094984, guid: 6fb1e09e129cd374598f5690a19485cc, type: 3}
+  totalHp: 10
+  totalDamage: 5
+  speed: 6
