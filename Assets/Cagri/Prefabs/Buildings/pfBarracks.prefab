@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4782235985580720507}
   - component: {fileID: 7275268324212304807}
   - component: {fileID: 2764849820044099418}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: pfBarracks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2697579444017727388}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SpawnPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,6 +134,14 @@ PrefabInstance:
     - target: {fileID: 1456656668474129271, guid: 198fb379d52685541bb2dc5692202acf, type: 3}
       propertyPath: m_Name
       value: BarracksVisual2D
+      objectReference: {fileID: 0}
+    - target: {fileID: 1456656668474129271, guid: 198fb379d52685541bb2dc5692202acf, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2341840962594083307, guid: 198fb379d52685541bb2dc5692202acf, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2499414142690952232, guid: 198fb379d52685541bb2dc5692202acf, type: 3}
       propertyPath: m_RootOrder
@@ -178,6 +186,22 @@ PrefabInstance:
     - target: {fileID: 2499414142690952232, guid: 198fb379d52685541bb2dc5692202acf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467271095152802500, guid: 198fb379d52685541bb2dc5692202acf, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093603941348909097, guid: 198fb379d52685541bb2dc5692202acf, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008223718084898327, guid: 198fb379d52685541bb2dc5692202acf, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5496171088292768586, guid: 198fb379d52685541bb2dc5692202acf, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8430752186153341279, guid: 198fb379d52685541bb2dc5692202acf, type: 3}
       propertyPath: m_RaycastTarget

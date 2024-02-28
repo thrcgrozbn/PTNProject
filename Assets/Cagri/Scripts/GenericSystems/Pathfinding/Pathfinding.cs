@@ -67,7 +67,7 @@ namespace Cagri.Scripts.GenericSystems.Pathfinding
                 foreach (var neighbourNode in GetNeighbourList(currentNode))
                 {
                     if (closedList.Contains(neighbourNode)) continue;
-                    if (!neighbourNode.isWalkable)
+                    if (!neighbourNode.IsItEmpty())
                     {
                         closedList.Add(neighbourNode);
                         continue;
@@ -112,7 +112,7 @@ namespace Cagri.Scripts.GenericSystems.Pathfinding
             }
         }
 
-        private List<Node> GetNeighbourList(Node currentNode)
+        public List<Node> GetNeighbourList(Node currentNode)
         {
             List<Node> neighbourList = new List<Node>();
             if (currentNode.x -1 >=0)

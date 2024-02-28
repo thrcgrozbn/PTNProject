@@ -10,7 +10,7 @@ namespace Cagri.Scripts.UI
 
         public GameObject inGamePanel;
         public EndGamePanel endGamePanel;
-        private bool _endGame=false;
+        private bool _toggle=false;
         
         
         public InformationPanel informationPanel;
@@ -24,22 +24,27 @@ namespace Cagri.Scripts.UI
 
         private void Start()
         {
-            ToggleEndGamePanel(_endGame);
+            ToggleEndGamePanel(_toggle);
         }
 
         private void Update()
         {
+            if (GameManager.instance.loseGame)
+            {
+                return;
+            }
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                _endGame = !_endGame;
-                ToggleEndGamePanel(_endGame);
+                _toggle = !_toggle;
+                ToggleEndGamePanel(_toggle);
             }
         }
 
-        private void ToggleEndGamePanel(bool endGame)
+        public void ToggleEndGamePanel(bool toggle)
         {
-            inGamePanel.SetActive(!endGame);
-            endGamePanel.gameObject.SetActive(endGame);
+            Time.timeScale = toggle ? 0 : 1;
+            inGamePanel.SetActive(!toggle);
+            endGamePanel.gameObject.SetActive(toggle);
         }
     }
 }

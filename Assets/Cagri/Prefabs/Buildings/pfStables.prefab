@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7129219463116315767}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SpawnPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4782235985580720507}
   - component: {fileID: 3269660989068796385}
   - component: {fileID: 6415246393085675683}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: pfStables
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GasStationVisual
       objectReference: {fileID: 0}
+    - target: {fileID: 1456656668474129271, guid: f19a78385465ec2479ed5804008ed44b, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 2499414142690952232, guid: f19a78385465ec2479ed5804008ed44b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -179,9 +183,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3844282784970919125, guid: f19a78385465ec2479ed5804008ed44b, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3997620240393340808, guid: f19a78385465ec2479ed5804008ed44b, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 4319848374353107788, guid: f19a78385465ec2479ed5804008ed44b, type: 3}
       propertyPath: m_Color.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5770087395508685485, guid: f19a78385465ec2479ed5804008ed44b, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8192178452665737466, guid: f19a78385465ec2479ed5804008ed44b, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8733900012010852415, guid: f19a78385465ec2479ed5804008ed44b, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f19a78385465ec2479ed5804008ed44b, type: 3}

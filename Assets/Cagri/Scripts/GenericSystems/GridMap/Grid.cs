@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Cagri.Scripts.GenericSystems.Pathfinding;
 using UnityEngine;
 
 namespace Cagri.Scripts.GenericSystems.GridMap
@@ -38,7 +40,7 @@ namespace Cagri.Scripts.GenericSystems.GridMap
             }
          }
          
-         bool showDebug = false;
+         bool showDebug = GameManager.instance.showGrid;
          if (showDebug)
          {
             debugTextArray = new TextMesh[width, height];
@@ -62,7 +64,7 @@ namespace Cagri.Scripts.GenericSystems.GridMap
          }
          
       }
-
+      
       public int GetWidth()
       {
          return _widht;
@@ -110,6 +112,10 @@ namespace Cagri.Scripts.GenericSystems.GridMap
          if (OnGridValueChanced != null) OnGridValueChanced(this, new OnGridValueChangedEventArgs() { x = x, y = y });
       }
 
+      public Vector3 PositionInTheMiddleOfGrid(int x , int y)
+      {
+         return GetWorldPosition(x, y) + Vector3.up * .5f +Vector3.right * .5f;
+      }
 
       public TGridObject GetGridObject(int x, int y)
       {

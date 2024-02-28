@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4782235985580720507}
   - component: {fileID: 2701131827893479690}
   - component: {fileID: 8005729460651641815}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: pfStoneQuarry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingsTypeSo: {fileID: 0}
   listOfProductionBuildingButtons: []
-  soldierHolderAroundBuildingList: []
+  sortedxylist: []
 --- !u!114 &8005729460651641815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,9 +92,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4782235985580720507}
     m_Modifications:
+    - target: {fileID: 1319919442504223819, guid: 4bf027a739dbf2b40a983d71338a9172, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 1456656668474129271, guid: 4bf027a739dbf2b40a983d71338a9172, type: 3}
       propertyPath: m_Name
       value: PoliceStationVisual
+      objectReference: {fileID: 0}
+    - target: {fileID: 1456656668474129271, guid: 4bf027a739dbf2b40a983d71338a9172, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2499414142690952232, guid: 4bf027a739dbf2b40a983d71338a9172, type: 3}
       propertyPath: m_RootOrder
@@ -148,6 +156,26 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+    - target: {fileID: 4260926892703584274, guid: 4bf027a739dbf2b40a983d71338a9172, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553425850110148020, guid: 4bf027a739dbf2b40a983d71338a9172, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5986166271347476954, guid: 4bf027a739dbf2b40a983d71338a9172, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807320625568988297, guid: 4bf027a739dbf2b40a983d71338a9172, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837653067615644857, guid: 4bf027a739dbf2b40a983d71338a9172, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bf027a739dbf2b40a983d71338a9172, type: 3}
 --- !u!4 &2706707296302881668 stripped

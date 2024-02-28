@@ -26,7 +26,7 @@ namespace Cagri.Scripts.UI.InGamePanel
                SetProductionButtons((BuildingsProducingSoldiers)buildings);
             }
         }
-
+        
         private void Update()
         {
             if (currentBuildings)

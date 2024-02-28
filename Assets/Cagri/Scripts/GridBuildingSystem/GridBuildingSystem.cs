@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Cagri.Scripts.GenericSystems.GridMap;
 using Cagri.Scripts.GenericSystems.Pathfinding;
 using Cagri.Scripts.GenericSystems.Utils;
@@ -48,14 +49,14 @@ namespace Cagri.Scripts.GridBuildingSystem
         
         private void Start()
         {
-            PlaceBuildingsWithoutProduction(mainBasePos,placedObjectTypeSOList.Count-1);
+            PlaceBuildingsWithoutProduction(mainBasePos,placedObjectTypeSOList.Count-1,true);
             foreach (Vector3 towerPos in enemyTowerPos)
             {
                 PlaceBuildingsWithoutProduction(towerPos,0);
             }
         }
 
-        private void PlaceBuildingsWithoutProduction(Vector3 pos,int index)
+        private void PlaceBuildingsWithoutProduction(Vector3 pos,int index,bool mainBase=false)
         {
             BuildingsTypeSO pSO = placedObjectTypeSOList[index];
             grid.GetXY(pos,out int x, out int z);
@@ -64,7 +65,7 @@ namespace Cagri.Scripts.GridBuildingSystem
             List<Vector2Int> gridPositionList = pSO.GetGridPositionList(placedObjectOrigin, dir);
             foreach (Vector2Int gridPosition in gridPositionList) 
             {
-                if (!grid.GetGridObject(gridPosition.x, gridPosition.y).CanBuild()) 
+                if (!grid.GetGridObject(gridPosition.x, gridPosition.y).IsItEmpty()) 
                 {
                     canBuild = false;
                    
@@ -73,7 +74,7 @@ namespace Cagri.Scripts.GridBuildingSystem
             }
             if (canBuild)
             {
-                Build(placedObjectOrigin,gridPositionList,x,z,pSO);
+                Build(placedObjectOrigin,gridPositionList,x,z,pSO,mainBase);
             }
         }
 
@@ -110,7 +111,7 @@ namespace Cagri.Scripts.GridBuildingSystem
                     canBuild = false;
                     break;
                 }
-                if (!grid.GetGridObject(gridPosition.x, gridPosition.y).CanBuild()) 
+                if (!grid.GetGridObject(gridPosition.x, gridPosition.y).IsItEmpty()) 
                 {
                     canBuild = false;
                     break;
@@ -136,7 +137,23 @@ namespace Cagri.Scripts.GridBuildingSystem
                 //Debug.Log("Cannot Build Here!");
             }
         }
-        private void Build(Vector2Int placedObjectOrigin, List<Vector2Int> gridPositionList,int x ,int z, BuildingsTypeSO pSO)
+        
+        private void SortNeighbourList(Buildings.Buildings building)
+        {
+            List<Vector2> sortedV2List = building.neighbourNodeList
+                .Select(node => new Vector2(node.x, node.y))
+                .OrderBy(v2 => v2.x)
+                .ThenBy(v2 => v2.y)
+                .ToList();
+
+            building.neighbourNodeList = sortedV2List
+                .Select(v2 => building.neighbourNodeList
+                    .First(node => node.x == v2.x && node.y == v2.y))
+                .ToList();
+        }
+       
+       
+        private void Build(Vector2Int placedObjectOrigin, List<Vector2Int> gridPositionList,int x ,int z, BuildingsTypeSO pSO,bool mainBase=false)
         {
             Vector2Int rotationOffset = pSO.GetRotationOffset(dir);
             Vector3 placedObjectWorldPosition = grid.GetWorldPosition(x, z) + new Vector3(rotationOffset.x, rotationOffset.y) * grid.GetCellSize();
@@ -149,10 +166,20 @@ namespace Cagri.Scripts.GridBuildingSystem
                 grid.GetGridObject(gridPosition.x, gridPosition.y).SetPlacedObject(buildings);
             }
 
+            foreach (Vector2Int gridPosList in gridPositionList)
+            {
+                grid.GetGridObject(gridPosList.x, gridPosList.y).SetBuildingNeighbourList(buildings);
+            }
+            SortNeighbourList(buildings);
             OnObjectPlaced?.Invoke(this, EventArgs.Empty);
             if (buildings.GetComponent<EnemyTower>())
             {
                 enemyTowerList.Add(buildings.GetComponent<EnemyTower>());
+            }
+            if (mainBase)
+            {
+                GameManager.instance.mainBase = buildings;
+                buildings.SelectObject();
             }
             DeselectObjectType();
         }
@@ -161,10 +188,9 @@ namespace Cagri.Scripts.GridBuildingSystem
             if (buildingsTypeSo)
             {
                 BuildControl();
-                if (Input.GetKeyDown(KeyCode.Alpha0)) { DeselectObjectType(); }
+                if (Input.GetMouseButtonDown(1)) { DeselectObjectType(); }
             }
-            
-            EnemyTowerUpdater();
+           EnemyTowerUpdater();
             
         /*if (Input.GetMouseButtonDown(1)) 
         {
@@ -174,10 +200,6 @@ namespace Cagri.Scripts.GridBuildingSystem
                 // Demolish
                 buildings.DestroySelf();
 
-                List<Vector2Int> gridPositionList = buildings.GetGridPositionList();
-                foreach (Vector2Int gridPosition in gridPositionList) {
-                    grid.GetGridObject(gridPosition.x, gridPosition.y).ClearPlacedObject();
-                }
             }
         }*/
         }
@@ -204,7 +226,9 @@ namespace Cagri.Scripts.GridBuildingSystem
             Vector2Int rotationOffset = buildingsTypeSo.GetRotationOffset(dir);
             Vector3 placedObjectWorldPosition = grid.GetWorldPosition(x, y) + new Vector3(rotationOffset.x, rotationOffset.y) * grid.GetCellSize();
             return placedObjectWorldPosition;
-        } else {
+        } 
+        else 
+        {
             return mousePosition;
         }
     }

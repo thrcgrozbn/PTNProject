@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4782235985580720507}
   - component: {fileID: -9052493232412657576}
   - component: {fileID: 9189312219759909544}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: pfPowerPlant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,13 +94,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4782235985580720507}
     m_Modifications:
+    - target: {fileID: 150623213561194793, guid: eb59f6095e2518c4ca288ca3360033aa, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 341033411013412536, guid: eb59f6095e2518c4ca288ca3360033aa, type: 3}
       propertyPath: m_RaycastTarget
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 797621038221305018, guid: eb59f6095e2518c4ca288ca3360033aa, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 1456656668474129271, guid: eb59f6095e2518c4ca288ca3360033aa, type: 3}
       propertyPath: m_Name
       value: TownHallVisual
+      objectReference: {fileID: 0}
+    - target: {fileID: 1456656668474129271, guid: eb59f6095e2518c4ca288ca3360033aa, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2499414142690952232, guid: eb59f6095e2518c4ca288ca3360033aa, type: 3}
       propertyPath: m_RootOrder
@@ -146,9 +158,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3554595551032760836, guid: eb59f6095e2518c4ca288ca3360033aa, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4459844419442032321, guid: eb59f6095e2518c4ca288ca3360033aa, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 6279043777276883181, guid: eb59f6095e2518c4ca288ca3360033aa, type: 3}
       propertyPath: m_Color.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647292325432733032, guid: eb59f6095e2518c4ca288ca3360033aa, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb59f6095e2518c4ca288ca3360033aa, type: 3}

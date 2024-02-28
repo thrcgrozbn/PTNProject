@@ -1,4 +1,6 @@
 ﻿using System;
+using Cagri.Scripts.GenericSystems.Pathfinding;
+using Cagri.Scripts.Soldiers;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -21,9 +23,7 @@ namespace CharacterController
         {
             animator=GetComponentInChildren<Animator>();
         }
-
         
-
         public Soldier(int maxHp, int damage,int speed)
         {
             this.maxHp = maxHp;
@@ -42,8 +42,7 @@ namespace CharacterController
         {
             return currentHealth;
         }
-
-
+        
         public void TakeDamage(int damageAmount)
         {
             currentHealth -= damageAmount;
@@ -55,8 +54,7 @@ namespace CharacterController
                 Die();
             }
         }
-
-
+        
         public void HealthBarControl()
         {
             healthBarFilled.fillAmount = Mathf.InverseLerp(0f, maxHp, currentHealth);
@@ -64,6 +62,7 @@ namespace CharacterController
 
         private void Die()
         {
+            GetComponent<PathfindingMovement>().GetNode().ClearSoldier();
             dead = true;
             healthBarFilled.transform.parent.gameObject.SetActive(false);
             animator.SetTrigger("Die");

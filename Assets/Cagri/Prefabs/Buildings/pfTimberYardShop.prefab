@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4782235985580720507}
   - component: {fileID: 2701131827893479690}
   - component: {fileID: -5548740233505378203}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: pfTimberYardShop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,9 +92,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4782235985580720507}
     m_Modifications:
+    - target: {fileID: 741609185799732177, guid: 1312dbe543d1ab24b87b1ad3105845ae, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 1456656668474129271, guid: 1312dbe543d1ab24b87b1ad3105845ae, type: 3}
       propertyPath: m_Name
       value: TimberYardVisual2D
+      objectReference: {fileID: 0}
+    - target: {fileID: 1456656668474129271, guid: 1312dbe543d1ab24b87b1ad3105845ae, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2499414142690952232, guid: 1312dbe543d1ab24b87b1ad3105845ae, type: 3}
       propertyPath: m_RootOrder
@@ -144,9 +152,25 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4586702450242419031, guid: 1312dbe543d1ab24b87b1ad3105845ae, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 4946216768471506472, guid: 1312dbe543d1ab24b87b1ad3105845ae, type: 3}
       propertyPath: m_Color.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383430289119504283, guid: 1312dbe543d1ab24b87b1ad3105845ae, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382253210676035952, guid: 1312dbe543d1ab24b87b1ad3105845ae, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8508095110108146271, guid: 1312dbe543d1ab24b87b1ad3105845ae, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1312dbe543d1ab24b87b1ad3105845ae, type: 3}

@@ -1,12 +1,14 @@
-﻿using Cagri.Scripts.GenericSystems.GridMap;
+﻿using System.Collections.Generic;
+using Cagri.Scripts.GenericSystems.GridMap;
 using Cagri.Scripts.GridBuildingSystem.Buildings;
+using CharacterController;
 using UnityEngine;
 
 namespace Cagri.Scripts.GenericSystems.Pathfinding
 {
     public class Node
     {
-        private Grid<Node> grid;
+        public Grid<Node> grid;
         public int x;
         public int y;
 
@@ -15,16 +17,15 @@ namespace Cagri.Scripts.GenericSystems.Pathfinding
         public int fCost;
         
         private Buildings Buildings;
+        private Soldier soldier;
         
-        [HideInInspector]public bool isWalkable;
         [HideInInspector]public Node cameFromNode;
-        [HideInInspector]public bool canBuild=true;
+        public bool isItEmpty;
         public Node(Grid<Node> grid,int x, int y)
         {
             this.grid = grid;
             this.x = x;
             this.y = y;
-            isWalkable = true;
         }
         
         public void CalculateFCost()
@@ -35,27 +36,49 @@ namespace Cagri.Scripts.GenericSystems.Pathfinding
         public override string ToString() {
             return x + ", " + y + "\n" + Buildings;
         }
+        
+        public void SetBuildingNeighbourList(Buildings building)
+        {
+            foreach (Node neighbour in Pathfinding.Instance.GetNeighbourList(this))
+            {
+                if (!building.neighbourNodeList.Contains(neighbour)&& neighbour.Buildings!=building)
+                {
+                    building.neighbourNodeList.Add(neighbour);
+                }
+            }
+        }
+       
+
+       
         public void SetPlacedObject(Buildings buildings)
         {
-            canBuild = false;
-            this.Buildings = buildings;
-            isWalkable = false;
+            Buildings = buildings;
             grid.TriggerGridObjectChanged(x, y);
         }
         public void ClearPlacedObject()
         {
-            canBuild = true;
             Buildings = null;
-            isWalkable = true;
             grid.TriggerGridObjectChanged(x, y);
         }
+    
+        public void SetSoldier(Soldier soldier)
+        {
+            this.soldier = soldier;
+        }
+
+        public void ClearSoldier()
+        {
+            soldier = null;
+        }
+
         public Buildings GetPlacedObject() {
             return Buildings;
         }
 
-        public bool CanBuild() {
-            return canBuild;
+        public bool IsItEmpty() {
+           
+            return Buildings==null && soldier == null;
         }
-        
+
     }
 }

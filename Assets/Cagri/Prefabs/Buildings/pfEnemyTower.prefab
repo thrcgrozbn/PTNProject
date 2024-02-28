@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4782235985580720507}
   - component: {fileID: 7171491288643597426}
   - component: {fileID: 3222944387895620208}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: pfEnemyTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,6 @@ MonoBehaviour:
   listOfProductionBuildingButtons: []
   soldierHolderAroundBuildingList: []
   radius: 8
-  detectionRange: 5
   target: {fileID: 0}
   arrowPrefab: {fileID: 8882036678934338192, guid: 322ce213e320b4843a7235ea2a3e3635, type: 3}
   fireRate: 1
@@ -100,6 +99,14 @@ PrefabInstance:
     - target: {fileID: 1456656668474129271, guid: 4b36de7814c4e704290751cf3021edf0, type: 3}
       propertyPath: m_Name
       value: EnemyTowerVisual2D
+      objectReference: {fileID: 0}
+    - target: {fileID: 1456656668474129271, guid: 4b36de7814c4e704290751cf3021edf0, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735832450319281839, guid: 4b36de7814c4e704290751cf3021edf0, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2499414142690952232, guid: 4b36de7814c4e704290751cf3021edf0, type: 3}
       propertyPath: m_RootOrder
@@ -145,9 +152,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2701927746413368599, guid: 4b36de7814c4e704290751cf3021edf0, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3328184185653334863, guid: 4b36de7814c4e704290751cf3021edf0, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 3767131247894414725, guid: 4b36de7814c4e704290751cf3021edf0, type: 3}
       propertyPath: m_Color.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189378426690353525, guid: 4b36de7814c4e704290751cf3021edf0, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5149259365084036331, guid: 4b36de7814c4e704290751cf3021edf0, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5580558308753389049, guid: 4b36de7814c4e704290751cf3021edf0, type: 3}
       propertyPath: m_RaycastTarget

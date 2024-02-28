@@ -1,7 +1,9 @@
 ﻿using Cagri.Scripts.GenericSystems.Pathfinding;
 using Cagri.Scripts.GenericSystems.Utils;
 using Cagri.Scripts.GridBuildingSystem.Buildings;
+using Cagri.Scripts.GridBuildingSystem.Buildings.Type;
 using Cagri.Scripts.Soldiers;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Cagri.Scripts.ObjectSelector
@@ -11,6 +13,7 @@ namespace Cagri.Scripts.ObjectSelector
         public static ObjectSelector instance;
         private Pathfinding pathfinding;
         public PathfindingMovement controller;
+        private Node currentAttackNode;
 
         private void Awake()
         {
@@ -21,7 +24,6 @@ namespace Cagri.Scripts.ObjectSelector
 
         private void Update()
         {
-            
             if (Input.GetMouseButtonDown(0))
             {
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -35,14 +37,19 @@ namespace Cagri.Scripts.ObjectSelector
                         buildings.SelectPlacedObject();
                         controller = null;
                     }
-                    PathfindingMovement cc=hit.transform.GetComponent<PathfindingMovement>();
-                    if (cc)
+                    PathfindingMovement pathfindingMovement=hit.transform.GetComponent<PathfindingMovement>();
+                    if (pathfindingMovement)
                     {
-                        controller = cc;
+                        controller = pathfindingMovement;
                     }
                 }
             }
-
+            
+            if (controller.soldier.dead)
+            {
+                return;
+            }
+            
             if (controller && Input.GetMouseButtonDown(1))
             {
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -50,28 +57,40 @@ namespace Cagri.Scripts.ObjectSelector
                 RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero,Mathf.Infinity);
                 if (hit )
                 {
-                    Buildings po=hit.transform.GetComponentInParent<Buildings>();
-                    if (po)
+                    EnemyTower enemyTower=hit.transform.GetComponentInParent<EnemyTower>();
+                    if (enemyTower)
                     {
-                        Vector3 pos=Vector3.zero;
-                        foreach (Transform spawnTransform in po.soldierHolderAroundBuildingList)
+                        Node getSoldierNode = controller.GetNode();
+                        Node nearestNode = null;
+                        Vector2 soldierNodeXY = new Vector2(getSoldierNode.x, getSoldierNode.y);
+                        foreach (Node node in enemyTower.neighbourNodeList)
                         {
-                            if (spawnTransform.childCount<=0)
+                            if (node.IsItEmpty())
                             {
-                                controller.transform.SetParent(spawnTransform);
-                                pos = spawnTransform.position;
+                                if (nearestNode==null)
+                                {
+                                    nearestNode = node;
+                                    continue;
+                                } 
+                                if (Vector2.Distance(new Vector2(node.x,node.y),soldierNodeXY)<Vector2.Distance(new Vector2(nearestNode.x,nearestNode.y),soldierNodeXY))
+                                {
+                                    nearestNode = node;
+                                }
                             }
                         }
-
-                        if (pos!=Vector3.zero)
+                        if (nearestNode==null)
                         {
-                            controller.SetTargetPosition(pos);
-                            controller.soldier.attack = true;
-                            controller.target = po.transform;
+                            return;
                         }
+                        controller.SetTargetPosition(nearestNode.grid.PositionInTheMiddleOfGrid(nearestNode.x,nearestNode.y));
+                        nearestNode.SetSoldier(controller.soldier);
+                        currentAttackNode = nearestNode;
+                        controller.soldier.attack = true;
+                        controller.target = enemyTower.transform;
                     }
                 }
             }
+            
             
             if (Utils.IsPointerOverUIObject())
             {
@@ -79,16 +98,21 @@ namespace Cagri.Scripts.ObjectSelector
             }
             if (Input.GetMouseButtonDown(1)&& controller) 
             {
-                if (controller.transform.parent)
+                
+                if (controller.soldier.attack)
                 {
-                    controller.transform.SetParent(null);
-                    if (controller.soldier.attack)
-                    {
-                        controller.soldier.attack = false;
-                    }
+                    currentAttackNode.ClearSoldier();
+                    controller.soldier.attack = false;
                 }
-                controller.SetTargetPosition(Utils.GetMouseWorldPosition());
+                pathfinding.grid.GetXY(Utils.GetMouseWorldPosition(), out int x, out int y);
+                Node node = pathfinding.GetNode(x, y);
+                if (node.IsItEmpty())
+                {
+                    controller.SetTargetPosition(pathfinding.grid.PositionInTheMiddleOfGrid(x,y));
+                }
             }
         }
+
+       
     }
 }
