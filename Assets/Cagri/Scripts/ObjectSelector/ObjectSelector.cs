@@ -44,7 +44,11 @@ namespace Cagri.Scripts.ObjectSelector
                     }
                 }
             }
-            
+
+            if (!controller)
+            {
+                return;
+            }
             if (controller.soldier.dead)
             {
                 return;
